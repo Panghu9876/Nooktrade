@@ -1,9 +1,9 @@
 
-// geminiService.ts - 临时禁用 AI 功能，仅保留空函数避免报错
-// 原 Google Generative AI 相关代码已注释，如需恢复请配置 API Key
+// services/geminiService.ts
+// 临时禁用 AI 功能，导出所有需要的函数，避免构建报错
 
-// 空函数：模拟 AI 响应，避免组件调用时报错
-export const verifyArtwork = async (artworkName: string) => {
+// 模拟艺术品验证函数
+export const verifyArtworkWithAI = async (artworkName: string) => {
   // 模拟返回默认结果，保证界面正常显示
   return {
     authenticity: "authentic",
@@ -13,7 +13,7 @@ export const verifyArtwork = async (artworkName: string) => {
   };
 };
 
-// 空函数：模拟大头菜价格预测
+// 模拟大头菜价格预测函数
 export const predictTurnipPrice = async (priceData: any) => {
   return {
     predictedPrice: 120,
