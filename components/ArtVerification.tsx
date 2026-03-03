@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Palette, Search, ShieldCheck, HelpCircle, Loader2 } from 'lucide-react';
-// 注释掉 AI 函数导入，解决构建报错
-// import { verifyArtWithAI } from '../services/geminiService';
+import { ShieldCheck, Loader2 } from 'lucide-react';
 
 const ArtVerification: React.FC = () => {
   const [artName, setArtName] = useState('');
@@ -13,20 +11,21 @@ const ArtVerification: React.FC = () => {
     if (!artName || !description) return;
     setIsLoading(true);
     
-    // 模拟 AI 返回结果，避免调用外部函数
-    const feedback = `這件${artName}經鑑定為真品！
+    // 纯模拟结果，无任何外部调用
+    setTimeout(() => {
+      const feedback = `這件${artName}經鑑定為真品！
 描述細節：${description}
-（AI 驗證功能已臨時禁用，頁面可正常顯示）`;
-    
-    setResult(feedback);
-    setIsLoading(false);
+（AI 驗證功能已關閉，頁面可正常使用）`;
+      setResult(feedback);
+      setIsLoading(false);
+    }, 800);
   };
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in duration-500">
       <div className="text-center space-y-2">
         <h2 className="text-3xl font-bold text-gray-800 tracking-tight">傅達的鑑定助手</h2>
-        <p className="text-gray-500">別被狐利的親戚騙了！使用 AI 專家驗證真偽。</p>
+        <p className="text-gray-500">別被狐利的親戚騙了！</p>
       </div>
 
       <div className="bg-white rounded-[2rem] p-6 md:p-8 space-y-6 shadow-sm border border-gray-100">
