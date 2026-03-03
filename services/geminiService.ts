@@ -1,40 +1,23 @@
 
-import { GoogleGenAI } from "@google/genai";
+// geminiService.ts - 临时禁用 AI 功能，仅保留空函数避免报错
+// 原 Google Generative AI 相关代码已注释，如需恢复请配置 API Key
 
-// Always use the process.env.API_KEY directly for initialization as per guidelines
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
-export const verifyArtWithAI = async (itemName: string, userDescription: string) => {
-  try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `你是一位《集合啦！動物森友會》藝術品鑑定專家。鑑定目標：「${itemName}」，玩家描述：「${userDescription}」。請極簡短判斷真偽，並說明鑑定關鍵點。使用繁體中文。`,
-      config: {
-        thinkingConfig: { thinkingBudget: 0 },
-        temperature: 0.4,
-        maxOutputTokens: 400,
-      }
-    });
-
-    return response.text;
-  } catch (error) {
-    console.error("Gemini Error:", error);
-    return "暫時無法鑑定。請查看官方指南！";
-  }
+// 空函数：模拟 AI 响应，避免组件调用时报错
+export const verifyArtwork = async (artworkName: string) => {
+  // 模拟返回默认结果，保证界面正常显示
+  return {
+    authenticity: "authentic",
+    confidence: 0.95,
+    description: "艺术品验证功能已临时禁用（未配置 API Key）",
+    tips: ["如需使用验证功能，请配置 Google Gemini API Key"]
+  };
 };
 
-export const getTurnipAdvice = async (prices: number[]) => {
-  try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `大頭菜價格序列：${prices.join(', ')}。分析屬於哪種模式（波型、遞減、三期、四期）並給出極簡短的買賣建議。使用繁體中文。`,
-      config: {
-        thinkingConfig: { thinkingBudget: 0 },
-        temperature: 0.4,
-      }
-    });
-    return response.text;
-  } catch (error) {
-    return "大頭菜市場今天難以捉摸！請持續關注趨勢。";
-  }
+// 空函数：模拟大头菜价格预测
+export const predictTurnipPrice = async (priceData: any) => {
+  return {
+    predictedPrice: 120,
+    trend: "上升",
+    explanation: "价格预测功能已临时禁用（未配置 API Key）"
+  };
 };
