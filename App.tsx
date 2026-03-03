@@ -22,12 +22,18 @@ import { UserProfile } from './types';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'market' | 'track' | 'guide' | 'profile'>('market');
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+  // 👇 替换这一行，强制填充用户数据，跳过登录页
+  const [userProfile, setUserProfile] = useState<UserProfile | null>({
+    nickname: '测试岛主',
+    islandName: '测试岛',
+    hemisphere: 'North',
+    avatarUrl: 'https://picsum.photos/seed/user-avatar/200/200',
+    passportNumber: 'SW-1234-5678-9012'
+  });
   const [isCreatingListing, setIsCreatingListing] = useState(false);
   const [isShowingNotifications, setIsShowingNotifications] = useState(false);
   const [notificationCount, setNotificationCount] = useState(2);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
-
   useEffect(() => {
     let timer: number;
     if (showSuccessToast) {
